@@ -1,21 +1,43 @@
-import { css } from "aphrodite";
+import { style } from "typestyle";
 
-export const LoginModalStyles = {
-  container: {
-    content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      marginRight: "-50%",
-      transform: "translate(-50%, -50%)",
-      width: 100,
-      height: 100,
-    },
-  },
+const LoginModalStyles = {
+  header: style({
+    width: "100%",
+    height: 50,
+    backgroundColor: "#FFF8DC",
+    alignItems: "center",
+  }),
 
-  button: {
-    width: 40,
+  button: style({
+    width: 80,
     height: 20,
-  },
+    marginLeft: 60,
+    marginTop: 20,
+    backgroundColor: "#F75D59",
+    border: 0,
+  }),
+
+  inputText: style({
+    textAlign: "center",
+    width: 150,
+    height: 20,
+    marginLeft: 20,
+    marginTop: 3,
+    borderRadius: 5,
+  }),
+
+  text: style({
+    marginLeft: 20,
+    fontSize: 13,
+    color: "#B5A642",
+    //fontWeight: "bold",
+  }),
+
+  textHeader: style({
+    marginLeft: 70,
+    color: "#EE9A4D",
+    fontWeight: "bold",
+  }),
 };
+
+export default LoginModalStyles;
