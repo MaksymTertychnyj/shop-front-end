@@ -1,18 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { LoginModalProps } from "./LoginModalProps";
 import Modal from "react-modal";
 import LoginModalStyles from "./LoginModalStyles";
 
-const LoginModal = ({ visible, closeFunc }: LoginModalProps) => {
+const LoginModal = ({
+  visible,
+  setLogin,
+  setPassword,
+  setIsAdmin,
+  confirmFunc,
+}: LoginModalProps) => {
   const [showModal, setShowModal] = useState(false);
+  const inputLogin = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
+  const inputPassword = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
+
+  const handleChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsAdmin(e.target.checked);
+  };
 
   useEffect(() => {
-    toggleModal();
-  }, [visible]);
-
-  const toggleModal = () => {
     setShowModal(!showModal);
-  };
+  }, [visible]);
 
   return (
     <Modal isOpen={visible} style={container}>
@@ -21,16 +29,23 @@ const LoginModal = ({ visible, closeFunc }: LoginModalProps) => {
           <text className={LoginModalStyles.textHeader}>Sign In</text>
         </div>
         <text className={LoginModalStyles.text}> Login</text>
-        <input type="text" className={LoginModalStyles.inputText}></input>
+        <input ref={inputLogin} type="text" className={LoginModalStyles.inputText} />
         <div style={{ height: 10 }}></div>
         <text className={LoginModalStyles.text}> Password</text>
-        <input type="password" className={LoginModalStyles.inputText}></input>
-        <button className={LoginModalStyles.button} onClick={closeFunc}>
+        <input ref={inputPassword} type="password" className={LoginModalStyles.inputText}></input>
+        <button
+          className={LoginModalStyles.button}
+          onClick={() => {
+            setLogin(inputLogin.current.value);
+            setPassword(inputPassword.current.value);
+            confirmFunc();
+          }}
+        >
           <text style={{ color: "white" }}>Login</text>
         </button>
         <div style={{ marginTop: 20, marginLeft: 20 }}>
           <label>
-            <input type="checkbox" />
+            <input onChange={handleChangeCheckbox} type="checkbox" />
             <text style={{ fontSize: 13, marginLeft: 5, color: "#B5A642" }}>As administrator</text>
           </label>
         </div>

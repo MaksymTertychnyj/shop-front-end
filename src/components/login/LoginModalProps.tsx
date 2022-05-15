@@ -1,4 +1,7 @@
 export interface LoginModalProps {
   visible: boolean;
-  closeFunc: () => void;
+  confirmFunc: () => void;
+  setLogin: (login: string) => void;
+  setPassword: (password: string) => void;
+  setIsAdmin: (isAdmin: boolean) => void;
 }
