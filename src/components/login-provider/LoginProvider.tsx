@@ -8,9 +8,6 @@ import LoginProviderContext from "./LoginProviderContext";
 const LoginProvider = ({ children }: any) => {
   const [isLoged, setIsLoged] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [login, setLogin] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   useEffect(() => {
     if (isLoged === false) {
@@ -21,30 +18,11 @@ const LoginProvider = ({ children }: any) => {
     }
   }, [isLoged]);
 
-  useEffect(() => {
-    if (login && password) {
-      LoginService.loginUser({ Login: login, Password: password }).then((resp) => {
-        if (resp.status === StatusCodes.OK) {
-          AuthManager.signInAsync(resp.data);
-          setIsLoged(true);
-          setLogin("");
-          console.log(resp);
-        } else {
-        }
-      });
-    }
-  }, [login]);
-
   return (
     <div style={{ flex: 1 }}>
       <LoginProviderContext.Provider value={{ isLoged, setIsLoged }}>
         {children}
-        <LoginModal
-          visible={showModal}
-          setLogin={setLogin}
-          setPassword={setPassword}
-          setIsAdmin={setIsAdmin}
-        />
+        <LoginModal visible={showModal} />
       </LoginProviderContext.Provider>
     </div>
   );

@@ -12,7 +12,7 @@ const LoginModalStyles = {
     width: 80,
     height: 20,
     marginLeft: 60,
-    marginTop: 20,
+    marginTop: 15,
     backgroundColor: "#F75D59",
     border: 0,
   }),
@@ -30,7 +30,11 @@ const LoginModalStyles = {
     marginLeft: 20,
     fontSize: 13,
     color: "#B5A642",
-    //fontWeight: "bold",
+  }),
+
+  textMessage: style({
+    fontSize: 12,
+    color: "#FF6700",
   }),
 
   textHeader: style({
