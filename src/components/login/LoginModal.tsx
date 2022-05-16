@@ -3,13 +3,9 @@ import { LoginModalProps } from "./LoginModalProps";
 import Modal from "react-modal";
 import LoginModalStyles from "./LoginModalStyles";
 
-const LoginModal = ({
-  visible,
-  setLogin,
-  setPassword,
-  setIsAdmin,
-  confirmFunc,
-}: LoginModalProps) => {
+Modal.setAppElement("#root");
+
+const LoginModal = ({ visible, setLogin, setPassword, setIsAdmin }: LoginModalProps) => {
   const [showModal, setShowModal] = useState(false);
   const inputLogin = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
   const inputPassword = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
@@ -38,7 +34,6 @@ const LoginModal = ({
           onClick={() => {
             setLogin(inputLogin.current.value);
             setPassword(inputPassword.current.value);
-            confirmFunc();
           }}
         >
           <text style={{ color: "white" }}>Login</text>
