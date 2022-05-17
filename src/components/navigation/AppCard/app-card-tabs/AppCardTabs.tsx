@@ -10,6 +10,7 @@ import HomeAdmin from "./app-card-activities/home-admin/HomeAdmin";
 import HomeUser from "./app-card-activities/home-user/HomeUser";
 import ProductsAdmin from "./app-card-activities/products-admin/ProductsAdmin";
 import ProductsUser from "./app-card-activities/products-user/ProductsUser";
+import StartPage from "./app-card-activities/start-page/StartPage";
 import AppCardTabsStyles from "./AppCardTabsStyles";
 
 const AppCardTabs = () => {
@@ -93,6 +94,8 @@ const AppCardTabs = () => {
 
   const ContentResult = () => {
     switch (toggleState) {
+      case 1:
+        return <StartPage />;
       case 10:
         return <HomeUser />;
       case 11:
