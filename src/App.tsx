@@ -1,5 +1,3 @@
-import { url } from "inspector";
-import Login from "./components/login/Login";
 import Providers from "./components/navigation/Providers";
 
 const App = () => {
