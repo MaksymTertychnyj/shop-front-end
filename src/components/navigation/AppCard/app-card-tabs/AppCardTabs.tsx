@@ -138,11 +138,7 @@ const AppCardTabs = () => {
           />
         </div>
       </div>
-      <div className={AppCardTabsStyles.content}>
-        <div className={toggleState === 1 ? "content active-content" : "content"}>
-          {ContentResult()}
-        </div>
-      </div>
+      <div className={AppCardTabsStyles.content}>{ContentResult()}</div>
     </div>
   );
 };
