@@ -2,23 +2,23 @@ import { style } from "typestyle";
 
 const AppCardTabsStyles = {
   container: style({
-    width: 100,
-    height: 300,
+    width: 110,
+    height: 350,
     paddingTop: 30,
   }),
 
   content: style({
-    width: 960,
-    height: 360,
-    marginTop: 20,
-    marginLeft: 30,
+    width: 800,
+    height: 400,
+    marginTop: 25,
+    marginLeft: 50,
     background: "#FFDFDD",
     borderRadius: 10,
   }),
 
   tabs: style({
-    width: 90,
-    height: 40,
+    width: 115,
+    height: 50,
     marginLeft: 20,
     marginTop: 10,
     color: "black",
@@ -26,8 +26,8 @@ const AppCardTabsStyles = {
     borderRadius: 3,
   }),
   activeTabs: style({
-    width: 95,
-    height: 45,
+    width: 120,
+    height: 55,
     marginLeft: 17,
     marginTop: 5,
     color: "red",
@@ -42,14 +42,14 @@ const AppCardTabsStyles = {
     height: 30,
     backgroundPosition: "center",
     backgroundSize: "cover",
-    marginLeft: 50,
+    marginLeft: 55,
   }),
 
   textLogin: style({
     marginTop: 5,
     fontSize: 13,
     textAlign: "center",
-    marginLeft: 20,
+    marginLeft: 25,
   }),
 };
 

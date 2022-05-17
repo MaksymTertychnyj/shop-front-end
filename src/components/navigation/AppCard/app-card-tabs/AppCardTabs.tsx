@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import User from "../../../../models/user/User";
-import UserAuthenticateResponse from "../../../../models/user/UserAuthenticateResponse";
 import AppTab from "../../../app-tab/AppTab";
 import AuthManager from "../../../auth/AuthManager";
 import LoginProviderContext from "../../../login-provider/LoginProviderContext";
@@ -8,7 +7,7 @@ import AppCardTabsStyles from "./AppCardTabsStyles";
 
 const AppCardTabs = () => {
   const [toggleState, setToogleState] = useState(1);
-  const [user, setUser] = useState<UserAuthenticateResponse>(null);
+  const [user, setUser] = useState<User>(null);
   const { isLoged, setIsLoged } = useContext(LoginProviderContext);
 
   useEffect(() => {
@@ -31,22 +30,47 @@ const AppCardTabs = () => {
         <div className={AppCardTabsStyles.textLogin} style={{ marginTop: 0 }}>
           {user?.lastName}
         </div>
-        <hr style={{ width: 85, marginLeft: 20 }} />
+        <hr style={{ width: 85, marginLeft: 25 }} />
         <div style={{ marginBottom: 15 }}>{}</div>
         <div className={toggleState === 1 ? AppCardTabsStyles.activeTabs : AppCardTabsStyles.tabs}>
-          <AppTab name={"Tab1"} index={1} toggleFunc={setToogleState} />
+          <AppTab
+            name={"Home"}
+            index={1}
+            toggleFunc={setToogleState}
+            image={require("../../../../public/images/icons/home.png")}
+          />
         </div>
         <div className={toggleState === 2 ? AppCardTabsStyles.activeTabs : AppCardTabsStyles.tabs}>
-          <AppTab name={"Tab2"} index={2} toggleFunc={setToogleState} />
+          <AppTab
+            name={"Products"}
+            index={2}
+            toggleFunc={setToogleState}
+            image={require("../../../../public/images/icons/products.png")}
+          />
         </div>
         <div className={toggleState === 3 ? AppCardTabsStyles.activeTabs : AppCardTabsStyles.tabs}>
-          <AppTab name={"Tab3"} index={3} toggleFunc={setToogleState} />
+          <AppTab
+            name={"Employees"}
+            index={3}
+            toggleFunc={setToogleState}
+            image={require("../../../../public/images/icons/employees.png")}
+          />
         </div>
         <div className={toggleState === 4 ? AppCardTabsStyles.activeTabs : AppCardTabsStyles.tabs}>
-          <AppTab name={"Tab4"} index={4} toggleFunc={setToogleState} />
+          <AppTab
+            name={"Customers"}
+            index={4}
+            toggleFunc={setToogleState}
+            image={require("../../../../public/images/icons/customers.png")}
+          />
         </div>
         <div className={toggleState === 5 ? AppCardTabsStyles.activeTabs : AppCardTabsStyles.tabs}>
-          <AppTab name={"LogOut"} index={5} toggleFunc={setToogleState} />
+          <AppTab
+            name={"LogOut"}
+            index={5}
+            toggleFunc={setToogleState}
+            image={require("../../../../public/images/icons/logOut.png")}
+          />
         </div>
       </div>
       <div className={AppCardTabsStyles.content}>

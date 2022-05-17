@@ -10,7 +10,12 @@ const AppTab = (props: AppTabProps) => {
         props.toggleFunc(props.index);
       }}
     >
-      <text className={AppTabStyles.textName}>{props.name}</text>
+      <div style={{ marginLeft: 7 }}>
+        <img src={props.image} className={AppTabStyles.image} />
+      </div>
+      <div style={{ marginTop: 10 }}>
+        <text className={AppTabStyles.textName}>{props.name}</text>
+      </div>
     </div>
   );
 };
