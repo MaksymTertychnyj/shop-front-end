@@ -1,10 +1,10 @@
 type User = null | {
-  FirstName: string;
-  LastName: string;
-  Email: string;
-  Login: string;
-  Password: string;
-  Role: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  login: string;
+  password: string;
+  role: string;
 };
 
 export default User;

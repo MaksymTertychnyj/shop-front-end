@@ -11,12 +11,12 @@ Modal.setAppElement("#root");
 
 const LoginModal = ({ visible }: LoginModalProps) => {
   const { setIsLoged } = useContext(LoginProviderContext);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [attemptLogin, setAttemptLogin] = useState(false);
   const [message, setMessage] = useState<string>("");
   const [showModal, setShowModal] = useState(false);
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const inputLogin = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
   const inputPassword = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
 
@@ -47,8 +47,6 @@ const LoginModal = ({ visible }: LoginModalProps) => {
             setMessage(reason.message);
           }
         });
-    } else {
-      setMessage("you have not enter login or password");
     }
   }, [attemptLogin]);
 

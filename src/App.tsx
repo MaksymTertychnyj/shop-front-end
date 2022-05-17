@@ -11,6 +11,7 @@ const App = () => {
         backgroundPosition: "center",
         backgroundSize: "cover",
         height: window.innerHeight,
+        width: window.innerWidth,
       }}
     >
       <Providers />
