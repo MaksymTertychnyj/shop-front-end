@@ -1,19 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import EmployeeService from "../../../../../../api-service/employeeService/EmployeeService";
+import User from "../../../../../../models/user/User";
 import AddEmployeeContent from "../../../../../add-employee-content/AddEmployeeContent";
 import AddEmployee from "../../../../../add-employee/AddEmployee";
+import EmployeeContext from "./EmployeeContext";
 import EmployeesStyles from "./EmployeesStyles";
 
 const Employee = () => {
+  const [employees, setEmployees] = useState<User[]>([]);
+  const [currentEmployee, setCurrentEmployee] = useState<User>(Object.create({}));
+
+  useEffect(() => {
+    EmployeeService.getAllEmployees().then((resp) => setEmployees(resp.data));
+  }, [currentEmployee]);
+
   return (
-    <div className={EmployeesStyles.container}>
-      <div>
-        <AddEmployee />
+    <EmployeeContext.Provider
+      value={{ employees, setEmployees, currentEmployee, setCurrentEmployee }}
+    >
+      <div className={EmployeesStyles.container}>
+        <div>
+          <AddEmployee />
+        </div>
+        <div className={EmployeesStyles.text}>Employees List</div>
+        <div>
+          <AddEmployeeContent />
+        </div>
       </div>
-      <div className={EmployeesStyles.text}>Employees List</div>
-      <div>
-        <AddEmployeeContent />
-      </div>
-    </div>
+    </EmployeeContext.Provider>
   );
 };
 

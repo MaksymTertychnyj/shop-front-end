@@ -1,18 +1,39 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import User from "../../models/user/User";
 import { EmployeeItemProps } from "./EmployeeItemProps";
 import EmployeeItemStyles from "./EmployeeItemStyles";
-import { Element } from "react-scroll";
+import EmployeeContext from "../navigation/AppCard/app-card-tabs/app-card-activities/employees/EmployeeContext";
 
 const EmployeeItem = (props: EmployeeItemProps) => {
+  const { currentEmployee, setCurrentEmployee } = useContext(EmployeeContext);
+  const [color, setColor] = useState<string>("");
+
+  useEffect(() => {
+    setColor(currentEmployee?.login === props.user?.login ? "#FFFFC2" : "black");
+  }, [currentEmployee]);
+
   return (
-    <div className={EmployeeItemStyles.container}>
-      <div className={EmployeeItemStyles.column}>{props.user?.login}</div>
-      <div className={EmployeeItemStyles.column}>{props.user?.firstName}</div>
-      <div className={EmployeeItemStyles.column}>{props.user?.lastName}</div>
-      <div className={EmployeeItemStyles.column}>{props.user?.email}</div>
+    <div
+      onClick={() => setCurrentEmployee(props.user)}
+      className={EmployeeItemStyles.container}
+      style={{
+        background: currentEmployee?.login === props.user?.login ? "#98AFC7" : "#43C6DB",
+      }}
+    >
+      <div className={EmployeeItemStyles.column}>
+        <text style={{ color: color }}>{props.user?.login}</text>
+      </div>
+      <div className={EmployeeItemStyles.column}>
+        <text style={{ color: color }}>{props.user?.firstName}</text>
+      </div>
+      <div className={EmployeeItemStyles.column}>
+        <text style={{ color: color }}>{props.user?.lastName}</text>
+      </div>
+      <div className={EmployeeItemStyles.column}>
+        <text style={{ color: color }}>{props.user?.email}</text>
+      </div>
       <div className={EmployeeItemStyles.column} style={{ width: 160 }}>
-        {props.user?.role}
+        <text style={{ color: color }}>{props.user?.role}</text>
       </div>
     </div>
   );

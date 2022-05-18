@@ -1,32 +1,67 @@
-import React, { MutableRefObject, useRef } from "react";
+import React, { MutableRefObject, useContext, useEffect, useRef, useState } from "react";
+import EmployeeService from "../../api-service/employeeService/EmployeeService";
+import LoginService from "../../api-service/login-service/LoginService";
+import User from "../../models/user/User";
+import EmployeeContext from "../navigation/AppCard/app-card-tabs/app-card-activities/employees/EmployeeContext";
 import AddEmployeeStyles from "./AddEmployeeStyles";
 
 const AddEmployee = () => {
+  const { setEmployees, currentEmployee, setCurrentEmployee } = useContext(EmployeeContext);
   const inputLogin = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
   const inputPassword = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
   const inputFirstname = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
-  const inpitLastname = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
+  const inputLastname = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
   const inputEmail = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
   const inputRole = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
+
+  useEffect(() => {
+    inputLogin.current.value = currentEmployee?.login ? currentEmployee.login : " ";
+    inputPassword.current.value = "";
+    inputFirstname.current.value = currentEmployee?.firstName ? currentEmployee.firstName : "";
+    inputLastname.current.value = currentEmployee?.lastName ? currentEmployee.lastName : "";
+    inputEmail.current.value = currentEmployee?.email ? currentEmployee.email : "";
+    inputRole.current.value = currentEmployee?.role ? currentEmployee.role : "";
+  }, [currentEmployee]);
+
+  const getEmployees = () => {
+    EmployeeService.getAllEmployees().then((resp) => setEmployees(resp.data));
+  };
 
   const SaveFunc = () => {
     if (
       inputLogin.current.value !== "" &&
       inputFirstname.current.value !== "" &&
-      inpitLastname.current.value !== "" &&
+      inputLastname.current.value !== "" &&
       inputEmail.current.value !== "" &&
       inputRole.current.value !== "" &&
       inputPassword.current.value !== ""
     ) {
-      console.log(inputLogin.current.value);
+      let employee: User = {
+        firstName: inputFirstname.current.value,
+        lastName: inputLastname.current.value,
+        email: inputEmail.current.value,
+        login: inputLogin.current.value,
+        password: inputPassword.current.value,
+        role: inputRole.current.value,
+      };
+      LoginService.registerUser(employee).then(() => getEmployees());
+      setCurrentEmployee(employee);
     } else {
       alert("you need to enter all of data");
     }
   };
 
-  const editFunc = () => {};
+  const editFunc = () => {
+    getEmployees();
+  };
 
-  const removeFunc = () => {};
+  const removeFunc = () => {
+    if (inputLogin.current.value !== "") {
+      EmployeeService.deleteEmployee(inputLogin.current.value).then(() => getEmployees());
+    } else {
+      alert("you didn't choose any employee");
+    }
+  };
 
   return (
     <div className={AddEmployeeStyles.container}>
@@ -41,7 +76,7 @@ const AddEmployee = () => {
         </div>
         <div className={AddEmployeeStyles.inputText}>
           <div className={AddEmployeeStyles.inputHeader}>Lastname</div>
-          <input ref={inpitLastname} type="text" className={AddEmployeeStyles.inputText} />
+          <input ref={inputLastname} type="text" className={AddEmployeeStyles.inputText} />
         </div>
         <div className={AddEmployeeStyles.inputText}>
           <div className={AddEmployeeStyles.inputHeader} style={{ width: 100 }}>

@@ -1,18 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import EmployeeService from "../../api-service/employeeService/EmployeeService";
-import User from "../../models/user/User";
-import AuthManager from "../auth/AuthManager";
 import EmployeeItem from "../employee-item/EmployeeItem";
-import LoginProviderContext from "../login-provider/LoginProviderContext";
+import EmployeeContext from "../navigation/AppCard/app-card-tabs/app-card-activities/employees/EmployeeContext";
 import AddEmployeeContentStyles from "./AddEmployeeContentStyles";
 
 const AddEmployeeContent = () => {
-  const { isLoged } = useContext(LoginProviderContext);
-  const [employees, setEmployees] = useState<User[]>([]);
-
-  useEffect(() => {
-    EmployeeService.getAllEmployees().then((resp) => setEmployees(resp.data));
-  }, [isLoged]);
+  const { employees } = useContext(EmployeeContext);
 
   return (
     <div className={AddEmployeeContentStyles.container}>

@@ -4,7 +4,6 @@ const EmployeeItemStyles = {
   container: style({
     display: "flex",
     alignItems: "center",
-    background: "#43C6DB",
   }),
 
   column: style({
