@@ -4,7 +4,7 @@ import UserAuthenticateResponse from "../../models/user/UserAuthenticateResponse
 import UserAuthenticateRequest from "../../models/user/UserAuthenticateRequest";
 import User from "../../models/user/User";
 
-const route = APIRoutes.getLoginAuthenticateUrl();
+const route = APIRoutes.getLoginUrl();
 
 const LoginService = {
   loginUser: async (userLoginRequest: UserAuthenticateRequest) =>
