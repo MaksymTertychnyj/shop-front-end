@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import EmployeeService from "../../api-service/employeeService/EmployeeService";
 import User from "../../models/user/User";
 import AuthManager from "../auth/AuthManager";
 import EmployeeItem from "../employee-item/EmployeeItem";
@@ -6,11 +7,11 @@ import LoginProviderContext from "../login-provider/LoginProviderContext";
 import AddEmployeeContentStyles from "./AddEmployeeContentStyles";
 
 const AddEmployeeContent = () => {
-  const [user, setUser] = useState<User>(null);
   const { isLoged } = useContext(LoginProviderContext);
+  const [employees, setEmployees] = useState<User[]>([]);
 
   useEffect(() => {
-    AuthManager.getUser().then((res) => setUser(JSON.parse(res!)));
+    EmployeeService.getAllEmployees().then((resp) => setEmployees(resp.data));
   }, [isLoged]);
 
   return (
@@ -24,12 +25,9 @@ const AddEmployeeContent = () => {
       </div>
       <div className={AddEmployeeContentStyles.blocBody}>
         <div className={AddEmployeeContentStyles.body}>
-          <EmployeeItem user={user} />
-          <EmployeeItem user={user} />
-          <EmployeeItem user={user} />
-          <EmployeeItem user={user} />
-          <EmployeeItem user={user} />
-          <EmployeeItem user={user} />
+          {employees.map((e, i) => {
+            return <EmployeeItem key={i} user={e} />;
+          })}
         </div>
       </div>
     </div>
