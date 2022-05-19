@@ -52,11 +52,23 @@ const AddEmployee = () => {
   };
 
   const editFunc = () => {
-    getEmployees();
+    let employee: User = {
+      firstName: inputFirstname.current.value,
+      lastName: inputLastname.current.value,
+      email: inputEmail.current.value,
+      login: inputLogin.current.value,
+      password: inputPassword.current.value,
+      role: inputRole.current.value,
+    };
+    if (currentEmployee?.login !== undefined) {
+      EmployeeService.updateEmployee(employee).then(() => getEmployees());
+    } else {
+      alert("you didn't choose any employee");
+    }
   };
 
   const removeFunc = () => {
-    if (inputLogin.current.value !== "") {
+    if (currentEmployee?.login !== undefined) {
       EmployeeService.deleteEmployee(inputLogin.current.value).then(() => getEmployees());
     } else {
       alert("you didn't choose any employee");
