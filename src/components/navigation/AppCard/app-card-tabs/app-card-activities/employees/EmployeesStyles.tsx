@@ -12,6 +12,7 @@ const EmployeesStyles = {
     fontSize: 14,
     fontWeight: "bold",
     color: "#008080",
+    cursor: "default",
   }),
 };
 

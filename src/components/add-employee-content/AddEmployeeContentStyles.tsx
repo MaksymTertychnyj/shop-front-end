@@ -35,6 +35,7 @@ const AddEmployeeContentStyles = {
     fontSize: 13,
     fontWeight: "bold",
     color: "white",
+    cursor: "default",
   }),
 };
 

@@ -5,6 +5,7 @@ const AppTabStyle = {
     width: 120,
     height: 40,
     display: "flex",
+    cursor: "pointer",
   }),
 
   textName: style({

@@ -4,6 +4,7 @@ const EmployeeItemStyles = {
   container: style({
     display: "flex",
     alignItems: "center",
+    cursor: "pointer",
   }),
 
   column: style({

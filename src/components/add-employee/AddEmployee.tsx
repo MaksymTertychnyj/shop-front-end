@@ -96,7 +96,7 @@ const AddEmployee = () => {
           </div>
           <input
             ref={inputEmail}
-            type="text"
+            type="email"
             className={AddEmployeeStyles.inputText}
             style={{ width: 150 }}
           />
@@ -113,7 +113,7 @@ const AddEmployee = () => {
       </div>
       <div
         className={AddEmployeeStyles.inputText}
-        style={{ marginLeft: 40, marginTop: -10, fontWeight: "bold" }}
+        style={{ marginLeft: 40, marginTop: -10, fontWeight: "bold", cursor: "default" }}
       >
         Password
       </div>

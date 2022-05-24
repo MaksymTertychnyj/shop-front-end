@@ -15,6 +15,7 @@ const LoginModalStyles = {
     marginTop: 15,
     backgroundColor: "#F75D59",
     border: 0,
+    cursor: "pointer",
   }),
 
   inputText: style({
@@ -30,6 +31,7 @@ const LoginModalStyles = {
     marginLeft: 20,
     fontSize: 13,
     color: "#B5A642",
+    cursor: "default",
   }),
 
   textMessage: style({
@@ -41,6 +43,7 @@ const LoginModalStyles = {
     marginLeft: 70,
     color: "#EE9A4D",
     fontWeight: "bold",
+    cursor: "default",
   }),
 };
 

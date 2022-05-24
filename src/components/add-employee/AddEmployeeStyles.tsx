@@ -36,10 +36,12 @@ const AddEmployeeStyles = {
   inputHeader: style({
     marginLeft: 50,
     fontWeight: "bold",
+    cursor: "default",
   }),
 
   button: style({
     marginLeft: 30,
+    cursor: "pointer",
   }),
 };
 

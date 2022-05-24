@@ -50,6 +50,7 @@ const AppCardTabsStyles = {
     fontSize: 13,
     textAlign: "center",
     marginLeft: 25,
+    cursor: "default",
   }),
 };
 
