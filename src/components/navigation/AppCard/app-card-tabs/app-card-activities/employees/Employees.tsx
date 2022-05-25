@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import EmployeeService from "../../../../../../api-service/employeeService/EmployeeService";
 import User from "../../../../../../models/user/User";
-import AddEmployeeContent from "../../../../../add-employee-content/AddEmployeeContent";
-import AddEmployee from "../../../../../add-employee/AddEmployee";
+import AddEmployeeContent from "../../../../../../activity/add-employee-content/AddEmployeeContent";
+import AddEmployee from "../../../../../../activity/add-employee/AddEmployee";
 import EmployeeContext from "./EmployeeContext";
 import EmployeesStyles from "./EmployeesStyles";
 
