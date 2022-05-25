@@ -2,7 +2,7 @@ import React, { MutableRefObject, useContext, useEffect, useRef, useState } from
 import EmployeeService from "../../api-service/employeeService/EmployeeService";
 import LoginService from "../../api-service/login-service/LoginService";
 import User from "../../models/user/User";
-import EmployeeContext from "../navigation/AppCard/app-card-tabs/app-card-activities/employees/EmployeeContext";
+import EmployeeContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/employees/EmployeeContext";
 import AddEmployeeStyles from "./AddEmployeeStyles";
 
 const AddEmployee = () => {
@@ -27,7 +27,7 @@ const AddEmployee = () => {
     EmployeeService.getAllEmployees().then((resp) => setEmployees(resp.data));
   };
 
-  const SaveFunc = () => {
+  const AddFunc = () => {
     if (
       inputLogin.current.value !== "" &&
       inputFirstname.current.value !== "" &&
@@ -125,9 +125,9 @@ const AddEmployee = () => {
         <button
           className={AddEmployeeStyles.button}
           style={{ marginLeft: 140 }}
-          onClick={() => SaveFunc()}
+          onClick={() => AddFunc()}
         >
-          Save
+          Add
         </button>
         <button className={AddEmployeeStyles.button} onClick={() => editFunc()}>
           Edit

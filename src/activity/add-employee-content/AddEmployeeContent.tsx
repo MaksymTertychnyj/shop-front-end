@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import EmployeeItem from "../employee-item/EmployeeItem";
-import EmployeeContext from "../navigation/AppCard/app-card-tabs/app-card-activities/employees/EmployeeContext";
+import EmployeeItem from "../../components/employee-item/EmployeeItem";
+import EmployeeContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/employees/EmployeeContext";
 import AddEmployeeContentStyles from "./AddEmployeeContentStyles";
 
 const AddEmployeeContent = () => {
