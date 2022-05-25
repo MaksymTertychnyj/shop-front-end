@@ -1,6 +1,7 @@
 import { MutableRefObject, useContext, useEffect, useRef, useState } from "react";
 import CategoryService from "../../api-service/category-service/CategoryService";
 import DepartmentService from "../../api-service/department-service/DepartmentService";
+import ImageService from "../../api-service/imageService/ImageService";
 import ProductsAdminContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/products-admin/ProductsAdminContext";
 import CategoryModel from "../../models/CategoryModel";
 import DepartmentModel from "../../models/DepartmentModel";
@@ -14,18 +15,33 @@ const ContentProductsAdmin = () => {
     setDepartment,
     setCategory,
     setInputName,
+    currentImageSource,
+    setCurrentImageSource,
   } = useContext(ProductsAdminContext);
-  const [image, setImage] = useState();
   const inputName = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
+
+  const loadImage = (targetId: number, targetType: number) => {
+    ImageService.getImage(targetId, targetType)
+      .then((resp) => setCurrentImageSource(resp.data))
+      .catch((ex) => setCurrentImageSource(""));
+  };
 
   const onChangeInputHandler = () => {
     setInputName(inputName.current.value);
   };
 
   useEffect(() => {
-    toggleState === 1
-      ? (inputName.current.value = currentDepartment ? currentDepartment.name : "")
-      : (inputName.current.value = currentCategory ? currentCategory.name : "");
+    if (toggleState === 1) {
+      inputName.current.value = currentDepartment ? currentDepartment.name : "";
+      if (currentDepartment) {
+        loadImage(currentDepartment.id, currentDepartment.targetType);
+      }
+    } else {
+      inputName.current.value = currentCategory ? currentCategory.name : "";
+      if (currentCategory) {
+        loadImage(currentCategory.id, currentCategory.targetType);
+      }
+    }
   }, [currentDepartment, currentCategory, toggleState]);
 
   const addHandler = () => {
@@ -94,8 +110,30 @@ const ContentProductsAdmin = () => {
   const upLoadImage = (e: any) => {
     e.preventDefault();
     const bodyFormData = new FormData(e.target);
+    ImageService.addImage(bodyFormData)
+      .then(() => {
+        if (toggleState === 1) {
+          loadImage(currentDepartment ? currentDepartment.id : 0, 0);
+        } else {
+          loadImage(currentCategory ? currentCategory.id : 0, 1);
+        }
+      })
+      .catch((ex) => alert(ex));
+  };
+
+  const deleteImage = () => {
     if (toggleState === 1) {
+      if (currentDepartment) {
+        ImageService.deleteImage(currentDepartment.id, currentDepartment.targetType).then(() =>
+          setCurrentImageSource("")
+        );
+      }
     } else {
+      if (currentCategory) {
+        ImageService.deleteImage(currentCategory.id, currentCategory.targetType).then(() =>
+          setCurrentImageSource("")
+        );
+      }
     }
   };
 
@@ -110,7 +148,7 @@ const ContentProductsAdmin = () => {
           onChange={() => onChangeInputHandler()}
         />
       </div>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", marginTop: -20 }}>
         <button className={ContentStyles.button} onClick={addHandler}>
           <div style={{ marginLeft: 7 }}>Add</div>
         </button>
@@ -122,18 +160,27 @@ const ContentProductsAdmin = () => {
         </button>
       </div>
       <div className={ContentStyles.imageContent}>
-        <img className={ContentStyles.image} alt="not found" src={image} />
+        <img className={ContentStyles.image} alt="not found" src={currentImageSource} />
       </div>
-      <form>
-        <div style={{ marginTop: 10 }} onSubmit={upLoadImage}>
-          <input type="file" name="imageData" />
-          <input type="hidden" name="targetId" value={1} />
-          <input type="hidden" name="targetType" value={6} />
-        </div>
-        <button type="submit" style={{ display: "flex", marginLeft: 25, marginTop: 15 }}>
-          Add image
-        </button>
-      </form>
+      <div style={{ display: "flex" }}>
+        <form onSubmit={upLoadImage}>
+          <div style={{ marginTop: 10, marginLeft: 25 }}>
+            <input type="file" name="imageData" />
+            <input
+              type="hidden"
+              name="targetId"
+              value={toggleState === 1 ? currentDepartment?.id : currentCategory?.id}
+            />
+            <input type="hidden" name="targetType" value={toggleState === 1 ? 0 : 1} />
+          </div>
+          <button type="submit" style={{ display: "flex", marginLeft: 25, marginTop: 15 }}>
+            Add image
+          </button>
+        </form>
+      </div>
+      <button type="button" style={{ marginTop: 16, marginRight: 150 }} onClick={deleteImage}>
+        Delete Image
+      </button>
     </div>
   );
 };

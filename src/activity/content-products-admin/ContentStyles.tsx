@@ -6,14 +6,14 @@ const ContentStyles = {
   }),
 
   image: style({
-    width: 80,
+    width: 65,
     height: 80,
     marginTop: 20,
-    marginLeft: 120,
+    marginLeft: -150,
   }),
 
   imageContent: style({
-    display: "flex",
+    //display: "flex",
     width: 500,
     height: 100,
   }),
@@ -21,7 +21,7 @@ const ContentStyles = {
   inputHeader: style({
     display: "flex",
     marginLeft: 30,
-    marginTop: 20,
+    marginTop: 10,
     fontWeight: "bold",
     cursor: "default",
   }),
@@ -42,6 +42,14 @@ const ContentStyles = {
     marginTop: 35,
     marginLeft: 30,
     cursor: "pointer",
+  }),
+
+  buttonChooseFile: style({
+    background: "#CFECEC",
+    width: 60,
+    height: 25,
+    borderRadius: 5,
+    fontSize: 14,
   }),
 };
 

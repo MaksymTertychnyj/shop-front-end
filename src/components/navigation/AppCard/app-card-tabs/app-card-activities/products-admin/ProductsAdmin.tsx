@@ -4,6 +4,7 @@ import ListProductsAdmin from "../../../../../../activity/list-products-admin/Li
 import DepartmentService from "../../../../../../api-service/department-service/DepartmentService";
 import CategoryModel from "../../../../../../models/CategoryModel";
 import DepartmentModel from "../../../../../../models/DepartmentModel";
+import ImageModel from "../../../../../../models/image/ImageModel";
 import AppTabList from "../../../../../app-tab-list/AppTabList";
 import ProductsAdminContext from "./ProductsAdminContext";
 import ProductsAdminStyles from "./ProductsAdminStyles";
@@ -13,6 +14,7 @@ const ProductsAdmin = () => {
   const [currentDepartment, setDepartment] = useState<DepartmentModel>(null);
   const [currentCategory, setCategory] = useState<CategoryModel>(null);
   const [inputName, setInputName] = useState<string>("");
+  const [currentImageSource, setCurrentImageSource] = useState<string>("");
 
   return (
     <ProductsAdminContext.Provider
@@ -25,6 +27,8 @@ const ProductsAdmin = () => {
         setCategory,
         inputName,
         setInputName,
+        currentImageSource,
+        setCurrentImageSource,
       }}
     >
       <div className={ProductsAdminStyles.container}>
