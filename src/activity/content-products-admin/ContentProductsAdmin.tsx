@@ -47,19 +47,14 @@ const ContentProductsAdmin = () => {
   }, [currentDepartment, currentCategory, toggleState]);
 
   const addHandler = () => {
-    if (toggleState === TargetTypes.department) {
-      DepartmentService.addDepartment(inputName.current.value)
-        .then((resp) => setDepartment(resp.data))
-        .catch((ex) => alert(ex));
-      setInputName("");
-    } else {
-      if (currentDepartment) {
-        CategoryService.addCategory(inputName.current.value, currentDepartment.id)
+    toggleState === TargetTypes.department
+      ? DepartmentService.addDepartment(inputName.current.value)
+          .then((resp) => setDepartment(resp.data))
+          .catch((ex) => alert(ex))
+      : CategoryService.addCategory(inputName.current.value, currentDepartment?.id!)
           .then((resp) => setCategory(resp.data))
           .catch((ex) => alert(ex));
-        setInputName("");
-      }
-    }
+    setInputName("");
   };
 
   const editHandler = () => {
@@ -94,25 +89,11 @@ const ContentProductsAdmin = () => {
   };
 
   const deleteHandler = () => {
-    if (toggleState === TargetTypes.department && currentDepartment) {
-      ImageService.deleteImage(currentDepartment.id, toggleState).then(() =>
-        setCurrentImageSource("")
-      );
-      DepartmentService.deleteDepartment(currentDepartment?.id).then(() => {
-        setInputName("");
-        setDepartment(null);
-      });
-    } else {
-      if (currentCategory) {
-        ImageService.deleteImage(currentCategory.id, toggleState).then(() =>
-          setCurrentImageSource("")
-        );
-        CategoryService.deleteCategory(currentCategory.id).then(() => {
-          setInputName("");
-          setCategory(null);
-        });
-      }
-    }
+    deleteImage();
+    toggleState === TargetTypes.department
+      ? DepartmentService.deleteDepartment(currentDepartment?.id!).then(() => setDepartment(null))
+      : CategoryService.deleteCategory(currentCategory?.id!).then(() => setCategory(null));
+    setInputName("");
   };
 
   const upLoadImage = (e: any) => {
@@ -120,29 +101,18 @@ const ContentProductsAdmin = () => {
     const bodyFormData = new FormData(e.target);
     ImageService.addImage(bodyFormData)
       .then(() => {
-        if (toggleState === TargetTypes.department) {
-          loadImage(currentDepartment ? currentDepartment.id : 0, TargetTypes.department);
-        } else {
-          loadImage(currentCategory ? currentCategory.id : 0, TargetTypes.categories);
-        }
+        toggleState === TargetTypes.department
+          ? loadImage(currentDepartment ? currentDepartment.id : 0, toggleState)
+          : loadImage(currentCategory ? currentCategory.id : 0, toggleState);
       })
       .catch((ex) => alert(ex));
   };
 
   const deleteImage = () => {
-    if (toggleState === TargetTypes.department) {
-      if (currentDepartment) {
-        ImageService.deleteImage(currentDepartment.id, currentDepartment.targetType).then(() =>
-          setCurrentImageSource("")
-        );
-      }
-    } else {
-      if (currentCategory) {
-        ImageService.deleteImage(currentCategory.id, currentCategory.targetType).then(() =>
-          setCurrentImageSource("")
-        );
-      }
-    }
+    ImageService.deleteImage(
+      toggleState === TargetTypes.department ? currentDepartment?.id! : currentCategory?.id!,
+      toggleState
+    ).then(() => setCurrentImageSource(""));
   };
 
   return (

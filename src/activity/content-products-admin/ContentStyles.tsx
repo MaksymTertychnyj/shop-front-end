@@ -34,11 +34,10 @@ const ContentStyles = {
   }),
 
   inputText: style({
-    display: "flex",
     width: 120,
     height: 20,
     textAlign: "center",
-    marginLeft: 10,
+    marginRight: 160,
     marginTop: 5,
     fontSize: 14,
     textOverflow: "ellipsis",
