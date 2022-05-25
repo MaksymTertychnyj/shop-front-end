@@ -5,23 +5,30 @@ const ContentStyles = {
     width: 300,
   }),
 
+  frame: style({
+    border: "1px solid #AFEEEE",
+    borderRadius: 10,
+    width: 307,
+    height: 90,
+    marginTop: 15,
+    marginLeft: 10,
+  }),
+
   image: style({
     width: 65,
     height: 80,
-    marginTop: 20,
-    marginLeft: -150,
+    marginTop: 10,
+    marginRight: 200,
   }),
 
   imageContent: style({
-    //display: "flex",
     width: 500,
     height: 100,
   }),
 
   inputHeader: style({
     display: "flex",
-    marginLeft: 30,
-    marginTop: 10,
+    marginLeft: 15,
     fontWeight: "bold",
     cursor: "default",
   }),
@@ -31,7 +38,7 @@ const ContentStyles = {
     width: 120,
     height: 20,
     textAlign: "center",
-    marginLeft: 25,
+    marginLeft: 10,
     marginTop: 5,
     fontSize: 14,
   }),
@@ -40,7 +47,7 @@ const ContentStyles = {
     display: "flex",
     width: 55,
     marginTop: 35,
-    marginLeft: 30,
+    marginLeft: 10,
     cursor: "pointer",
   }),
 

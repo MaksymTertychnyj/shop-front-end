@@ -5,6 +5,7 @@ import ImageService from "../../api-service/imageService/ImageService";
 import ProductsAdminContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/products-admin/ProductsAdminContext";
 import CategoryModel from "../../models/CategoryModel";
 import DepartmentModel from "../../models/DepartmentModel";
+import TargetTypes from "../../models/TargetTypes";
 import ContentStyles from "./ContentStyles";
 
 const ContentProductsAdmin = () => {
@@ -113,9 +114,9 @@ const ContentProductsAdmin = () => {
     ImageService.addImage(bodyFormData)
       .then(() => {
         if (toggleState === 1) {
-          loadImage(currentDepartment ? currentDepartment.id : 0, 0);
+          loadImage(currentDepartment ? currentDepartment.id : 0, TargetTypes.department);
         } else {
-          loadImage(currentCategory ? currentCategory.id : 0, 1);
+          loadImage(currentCategory ? currentCategory.id : 0, TargetTypes.categories);
         }
       })
       .catch((ex) => alert(ex));
@@ -139,7 +140,7 @@ const ContentProductsAdmin = () => {
 
   return (
     <div className={ContentStyles.container}>
-      <div>
+      <div className={ContentStyles.frame}>
         <div className={ContentStyles.inputHeader}>Name</div>
         <input
           ref={inputName}
@@ -147,40 +148,53 @@ const ContentProductsAdmin = () => {
           className={ContentStyles.inputText}
           onChange={() => onChangeInputHandler()}
         />
-      </div>
-      <div style={{ display: "flex", marginTop: -20 }}>
-        <button className={ContentStyles.button} onClick={addHandler}>
-          <div style={{ marginLeft: 7 }}>Add</div>
-        </button>
-        <button className={ContentStyles.button} onClick={editHandler}>
-          <div style={{ marginLeft: 7 }}>Edit</div>
-        </button>
-        <button className={ContentStyles.button} onClick={deleteHandler}>
-          <div>Delete</div>
-        </button>
-      </div>
-      <div className={ContentStyles.imageContent}>
-        <img className={ContentStyles.image} alt="not found" src={currentImageSource} />
-      </div>
-      <div style={{ display: "flex" }}>
-        <form onSubmit={upLoadImage}>
-          <div style={{ marginTop: 10, marginLeft: 25 }}>
-            <input type="file" name="imageData" />
-            <input
-              type="hidden"
-              name="targetId"
-              value={toggleState === 1 ? currentDepartment?.id : currentCategory?.id}
-            />
-            <input type="hidden" name="targetType" value={toggleState === 1 ? 0 : 1} />
-          </div>
-          <button type="submit" style={{ display: "flex", marginLeft: 25, marginTop: 15 }}>
-            Add image
+        <div style={{ display: "flex", marginTop: -25 }}>
+          <button className={ContentStyles.button} onClick={addHandler}>
+            <div style={{ marginLeft: 7 }}>Add</div>
           </button>
-        </form>
+          <button className={ContentStyles.button} onClick={editHandler}>
+            <div style={{ marginLeft: 7 }}>Edit</div>
+          </button>
+          <button className={ContentStyles.button} onClick={deleteHandler}>
+            <div>Delete</div>
+          </button>
+        </div>
       </div>
-      <button type="button" style={{ marginTop: 16, marginRight: 150 }} onClick={deleteImage}>
-        Delete Image
-      </button>
+      <div className={ContentStyles.frame} style={{ height: 200, marginTop: 10 }}>
+        <div className={ContentStyles.imageContent}>
+          <img className={ContentStyles.image} alt="not found" src={currentImageSource} />
+        </div>
+        <div style={{ display: "flex" }}>
+          <form onSubmit={upLoadImage}>
+            <div style={{ marginTop: 0, marginLeft: 25 }}>
+              <input type="file" name="imageData" />
+              <input
+                type="hidden"
+                name="targetId"
+                value={toggleState === 1 ? currentDepartment?.id : currentCategory?.id}
+              />
+              <input
+                type="hidden"
+                name="targetType"
+                value={toggleState === 1 ? TargetTypes.department : TargetTypes.categories}
+              />
+            </div>
+            <button
+              type="submit"
+              style={{ display: "flex", marginLeft: 25, marginTop: 10, cursor: "pointer" }}
+            >
+              Add image
+            </button>
+          </form>
+        </div>
+        <button
+          type="button"
+          style={{ marginTop: 10, marginRight: 160, cursor: "pointer" }}
+          onClick={deleteImage}
+        >
+          Delete Image
+        </button>
+      </div>
     </div>
   );
 };

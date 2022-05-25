@@ -17,9 +17,10 @@ const CategoryItem = (props: CategoryItemProps) => {
       className={ListStyles.row}
       style={{
         background: currentCategory?.name === props?.category?.name ? "#43C6DB" : "#98AFC7",
+        cursor: "pointer",
       }}
     >
-      <div className={ListStyles.column}>
+      <div className={ListStyles.column} style={{ cursor: "pointer" }}>
         <text style={{ color: color }}>{props?.category?.name}</text>
       </div>
     </div>

@@ -20,7 +20,7 @@ const DepartmentItem = (props: DepartmentItemProps) => {
         background: currentDepartment?.name === props?.department?.name ? "#43C6DB" : "#98AFC7",
       }}
     >
-      <div className={ListStyles.column}>
+      <div className={ListStyles.column} style={{ cursor: "pointer" }}>
         <text style={{ color: color }}>{props.department?.name}</text>
       </div>
     </div>
