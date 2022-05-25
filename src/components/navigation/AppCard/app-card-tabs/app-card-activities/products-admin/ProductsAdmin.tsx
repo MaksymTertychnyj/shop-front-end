@@ -5,12 +5,13 @@ import DepartmentService from "../../../../../../api-service/department-service/
 import CategoryModel from "../../../../../../models/CategoryModel";
 import DepartmentModel from "../../../../../../models/DepartmentModel";
 import ImageModel from "../../../../../../models/image/ImageModel";
+import TargetTypes from "../../../../../../models/TargetTypes";
 import AppTabList from "../../../../../app-tab-list/AppTabList";
 import ProductsAdminContext from "./ProductsAdminContext";
 import ProductsAdminStyles from "./ProductsAdminStyles";
 
 const ProductsAdmin = () => {
-  const [toggleState, setToggleState] = useState(1);
+  const [toggleState, setToggleState] = useState(TargetTypes.department);
   const [currentDepartment, setDepartment] = useState<DepartmentModel>(null);
   const [currentCategory, setCategory] = useState<CategoryModel>(null);
   const [inputName, setInputName] = useState<string>("");

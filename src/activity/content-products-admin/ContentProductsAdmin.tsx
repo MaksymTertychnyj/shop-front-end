@@ -24,7 +24,7 @@ const ContentProductsAdmin = () => {
   const loadImage = (targetId: number, targetType: number) => {
     ImageService.getImage(targetId, targetType)
       .then((resp) => setCurrentImageSource(resp.data))
-      .catch((ex) => setCurrentImageSource(""));
+      .catch(() => setCurrentImageSource(""));
   };
 
   const onChangeInputHandler = () => {
@@ -32,8 +32,9 @@ const ContentProductsAdmin = () => {
   };
 
   useEffect(() => {
-    if (toggleState === 1) {
+    if (toggleState === TargetTypes.department) {
       inputName.current.value = currentDepartment ? currentDepartment.name : "";
+      setCategory(null);
       if (currentDepartment) {
         loadImage(currentDepartment.id, currentDepartment.targetType);
       }
@@ -46,7 +47,7 @@ const ContentProductsAdmin = () => {
   }, [currentDepartment, currentCategory, toggleState]);
 
   const addHandler = () => {
-    if (toggleState === 1) {
+    if (toggleState === TargetTypes.department) {
       DepartmentService.addDepartment(inputName.current.value)
         .then((resp) => setDepartment(resp.data))
         .catch((ex) => alert(ex));
@@ -62,7 +63,7 @@ const ContentProductsAdmin = () => {
   };
 
   const editHandler = () => {
-    if (toggleState === 1 && currentDepartment) {
+    if (toggleState === TargetTypes.department && currentDepartment) {
       let dep: DepartmentModel = {
         id: currentDepartment?.id,
         name: inputName.current.value,
@@ -93,13 +94,19 @@ const ContentProductsAdmin = () => {
   };
 
   const deleteHandler = () => {
-    if (toggleState === 1 && currentDepartment) {
+    if (toggleState === TargetTypes.department && currentDepartment) {
+      ImageService.deleteImage(currentDepartment.id, toggleState).then(() =>
+        setCurrentImageSource("")
+      );
       DepartmentService.deleteDepartment(currentDepartment?.id).then(() => {
         setInputName("");
         setDepartment(null);
       });
     } else {
       if (currentCategory) {
+        ImageService.deleteImage(currentCategory.id, toggleState).then(() =>
+          setCurrentImageSource("")
+        );
         CategoryService.deleteCategory(currentCategory.id).then(() => {
           setInputName("");
           setCategory(null);
@@ -113,7 +120,7 @@ const ContentProductsAdmin = () => {
     const bodyFormData = new FormData(e.target);
     ImageService.addImage(bodyFormData)
       .then(() => {
-        if (toggleState === 1) {
+        if (toggleState === TargetTypes.department) {
           loadImage(currentDepartment ? currentDepartment.id : 0, TargetTypes.department);
         } else {
           loadImage(currentCategory ? currentCategory.id : 0, TargetTypes.categories);
@@ -123,7 +130,7 @@ const ContentProductsAdmin = () => {
   };
 
   const deleteImage = () => {
-    if (toggleState === 1) {
+    if (toggleState === TargetTypes.department) {
       if (currentDepartment) {
         ImageService.deleteImage(currentDepartment.id, currentDepartment.targetType).then(() =>
           setCurrentImageSource("")
@@ -144,7 +151,7 @@ const ContentProductsAdmin = () => {
         <div className={ContentStyles.inputHeader}>Name</div>
         <input
           ref={inputName}
-          type="text"
+          type="input"
           className={ContentStyles.inputText}
           onChange={() => onChangeInputHandler()}
         />
@@ -171,13 +178,13 @@ const ContentProductsAdmin = () => {
               <input
                 type="hidden"
                 name="targetId"
-                value={toggleState === 1 ? currentDepartment?.id : currentCategory?.id}
+                value={
+                  toggleState === TargetTypes.department
+                    ? currentDepartment?.id
+                    : currentCategory?.id
+                }
               />
-              <input
-                type="hidden"
-                name="targetType"
-                value={toggleState === 1 ? TargetTypes.department : TargetTypes.categories}
-              />
+              <input type="hidden" name="targetType" value={toggleState} />
             </div>
             <button
               type="submit"

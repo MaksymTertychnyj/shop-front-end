@@ -41,6 +41,7 @@ const ContentStyles = {
     marginLeft: 10,
     marginTop: 5,
     fontSize: 14,
+    textOverflow: "ellipsis",
   }),
 
   button: style({

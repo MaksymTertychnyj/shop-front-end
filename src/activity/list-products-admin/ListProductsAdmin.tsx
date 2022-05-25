@@ -5,6 +5,7 @@ import EmployeeItem from "../../components/employee-item/EmployeeItem";
 import ProductsAdminContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/products-admin/ProductsAdminContext";
 import CategoryModel from "../../models/CategoryModel";
 import DepartmentModel from "../../models/DepartmentModel";
+import TargetTypes from "../../models/TargetTypes";
 import CategoryItem from "./CategoryItem";
 import DepartmentItem from "./DepartmentItem";
 import ListStyles from "./ListStyles";
@@ -37,12 +38,12 @@ const ListProductsAdmin = () => {
     <div className={ListStyles.container}>
       <div className={ListStyles.header}>
         <div className={ListStyles.text}>
-          {toggleState === 1 ? "List of Departments" : "List of Categories"}
+          {toggleState === TargetTypes.department ? "List of Departments" : "List of Categories"}
         </div>
       </div>
       <div className={ListStyles.blocBody}>
         <div className={ListStyles.body}>
-          {toggleState === 1
+          {toggleState === TargetTypes.department
             ? departments.map((d, i) => {
                 if (inputName === "") {
                   return <DepartmentItem key={i} department={d} />;
