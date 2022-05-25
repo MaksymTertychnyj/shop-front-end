@@ -1,5 +1,5 @@
 type ImageModel = null | {
-  ImageData: Uint8Array;
+  imageData: Uint8Array;
   targetId: number;
   targetType: number;
 };
