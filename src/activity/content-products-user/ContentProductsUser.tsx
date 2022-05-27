@@ -105,20 +105,24 @@ const ContentProductsUser = () => {
         alert("incorrect data of product");
       }
     } else {
-      alert("you havn't choosed any product");
+      alert("you haven't choosed any product");
     }
   };
 
   const deleteHandler = () => {
     if (currentProduct) {
+      ImageService.deleteImage(currentProduct.id, TargetTypes.products);
       ProductService.deleteProduct(currentProduct.id).then(() => {
         setProduct(null);
         ProductService.getProductsByCategory(idCategory)
-          .then((resp) => setProducts(resp.data))
+          .then((resp) => {
+            setProducts(resp.data);
+            setCurrentImageSource("");
+          })
           .catch((ex) => alert(ex));
       });
     } else {
-      alert("you havwn't choosed any product");
+      alert("you haven't choosed any product");
     }
   };
 
@@ -152,6 +156,9 @@ const ContentProductsUser = () => {
     setProducts([]);
     setProduct(null);
     setCurrentImageSource("");
+    ImageService.getImage(idDepartment, TargetTypes.department).then((resp) =>
+      setCurrentImageSource(resp.data)
+    );
   }, [idDepartment]);
 
   useEffect(() => {
@@ -160,6 +167,9 @@ const ContentProductsUser = () => {
         setProducts(resp.data);
         setProduct(null);
         setCurrentImageSource("");
+        ImageService.getImage(idCategory, TargetTypes.categories).then((resp) =>
+          setCurrentImageSource(resp.data)
+        );
       })
       .catch(() => setProducts([]));
   }, [idCategory]);

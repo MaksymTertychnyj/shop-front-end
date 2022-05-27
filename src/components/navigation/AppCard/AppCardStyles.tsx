@@ -2,7 +2,7 @@ import { style } from "typestyle";
 
 const AppCardStyles = {
   container: style({
-    width: window.innerWidth - 290,
+    width: 985,
     height: 450,
     background: "#FBF6D9",
     transform: "translate(15%, 5%)",
