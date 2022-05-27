@@ -10,6 +10,14 @@ const ProductItem = ({ product }: any) => {
     setColor(currentProduct?.name === product?.name ? "#FFFFC2" : "black");
   }, [currentProduct]);
 
+  const checkTextWidth = (text: string, countChars: number) => {
+    if (text.length > countChars) {
+      return text.slice(0, countChars - 1) + " ...";
+    } else {
+      return text;
+    }
+  };
+
   return (
     <div
       onClick={() => setProduct(product)}
@@ -21,16 +29,16 @@ const ProductItem = ({ product }: any) => {
     >
       <div className={ListStyles.row} style={{ cursor: "pointer" }}>
         <text className={ListStyles.column} style={{ color: color, width: 39 }}>
-          {product?.id}
+          {checkTextWidth(product?.id.toString(), 4)}
         </text>
         <text className={ListStyles.column} style={{ color: color, width: 140 }}>
-          {product?.name}
+          {checkTextWidth(product.name, 20)}
         </text>
         <text className={ListStyles.column} style={{ color: color }}>
-          {product?.quantity}
+          {checkTextWidth(product?.quantity.toString(), 8)}
         </text>
         <text className={ListStyles.column} style={{ color: color, width: 63 }}>
-          {product?.price}
+          {checkTextWidth(product?.price.toString(), 8)}
         </text>
       </div>
     </div>
