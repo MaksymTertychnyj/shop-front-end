@@ -8,16 +8,10 @@ import ProductsUserContext from "./ProductsUserContext";
 import ProductsUserStyles from "./ProductsUserStyles";
 
 const ProductsUser = () => {
-  const [currentDepartment, setDepartment] = useState<DepartmentModel>(null);
-  const [currentCategory, setCategory] = useState<CategoryModel>(null);
   const [currentProduct, setProduct] = useState<ProductModel>(null);
   const [products, setProducts] = useState<ProductModel[]>([]);
   const [inputName, setInputName] = useState<string>("");
-  const [inputQuantity, setInputQuantity] = useState<string>("");
-  const [inputPrice, setInputPrice] = useState<string>("");
-  const [currentImageSource, setCurrentImageSource] = useState<string>(
-    require("../../../../../../public/images/icons/home.png")
-  );
+  const [currentImageSource, setCurrentImageSource] = useState<string>("");
 
   return (
     <ProductsUserContext.Provider
@@ -29,11 +23,7 @@ const ProductsUser = () => {
         products,
         setProducts,
         inputName,
-        inputQuantity,
-        inputPrice,
         setInputName,
-        setInputQuantity,
-        setInputPrice,
       }}
     >
       <div className={ProductsUserStyles.container}>
