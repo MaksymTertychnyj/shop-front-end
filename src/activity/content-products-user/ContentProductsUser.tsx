@@ -4,6 +4,7 @@ import { MutableRefObject, useContext, useEffect, useRef, useState } from "react
 import Select from "react-select";
 import CategoryService from "../../api-service/category-service/CategoryService";
 import DepartmentService from "../../api-service/department-service/DepartmentService";
+import ImageService from "../../api-service/imageService/ImageService";
 import ProductService from "../../api-service/product-service/ProductService";
 import CategoryMapper from "../../components/data-mapper/CategoryMapper";
 import DepartmentMapper from "../../components/data-mapper/DepartmentMapper";
@@ -12,12 +13,20 @@ import CategoryModel from "../../models/CategoryModel";
 import DataOfDropdown from "../../models/DataOfDropdown";
 import DepartmentModel from "../../models/DepartmentModel";
 import ProductModel from "../../models/ProductModel";
+import TargetTypes from "../../models/TargetTypes";
 import ContentProductsUserStyles from "./ContentProductsUserStyles";
 import DropDownStyles from "./DropDownStyles";
 
 const ContentProductsUser = () => {
-  const { setProducts, setProduct, currentProduct, setInputName, products } =
-    useContext(ProductsUserContext);
+  const {
+    setProducts,
+    setProduct,
+    currentProduct,
+    setInputName,
+    products,
+    currentImageSource,
+    setCurrentImageSource,
+  } = useContext(ProductsUserContext);
   const [departments, setDepartments] = useState<DataOfDropdown[]>([]);
   const [categories, setCategories] = useState<DataOfDropdown[]>([]);
   const [idDepartment, setIdDepartment] = useState(0);
@@ -27,6 +36,34 @@ const ContentProductsUser = () => {
   const inputName = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
   const inputQuantity = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
   const inputPrice = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
+
+  const upLoadImage = (e: any) => {
+    e.preventDefault();
+    const bodyFormData = new FormData(e.target);
+    ImageService.addImage(bodyFormData)
+      .then(() => {
+        loadImage(currentProduct?.id!, TargetTypes.products);
+      })
+      .catch((ex) => alert(ex));
+  };
+
+  const loadImage = (targetId: number, targetType: number) => {
+    ImageService.getImage(targetId, targetType)
+      .then((resp) => setCurrentImageSource(resp.data))
+      .catch(() => setCurrentImageSource(""));
+  };
+
+  const deleteImage = () => {
+    if (currentProduct) {
+      ImageService.deleteImage(currentProduct.id, TargetTypes.products)
+        .then(() => setCurrentImageSource(""))
+        .catch((ex) => alert(ex));
+    }
+  };
+
+  const onChangeInputNameHandler = () => {
+    setInputName(inputName.current.value);
+  };
 
   const addHandler = () => {
     let prod: ProductModel = Object.create(null);
@@ -97,6 +134,8 @@ const ContentProductsUser = () => {
         inputName.current.value = currentProduct.name;
         inputQuantity.current.value = currentProduct.quantity.toString();
         inputPrice.current.value = currentProduct.price.toString();
+
+        loadImage(currentProduct.id, TargetTypes.products);
       } else {
         inputName.current.value = "";
         inputQuantity.current.value = "";
@@ -112,6 +151,7 @@ const ContentProductsUser = () => {
     setInputCategoryValue(null);
     setProducts([]);
     setProduct(null);
+    setCurrentImageSource("");
   }, [idDepartment]);
 
   useEffect(() => {
@@ -119,6 +159,7 @@ const ContentProductsUser = () => {
       .then((resp) => {
         setProducts(resp.data);
         setProduct(null);
+        setCurrentImageSource("");
       })
       .catch(() => setProducts([]));
   }, [idCategory]);
@@ -148,7 +189,7 @@ const ContentProductsUser = () => {
             />
           </div>
         </div>
-        <div style={{ display: "flex", marginTop: 20 }}>
+        <div style={{ display: "flex", marginTop: 10 }}>
           <div className={ContentProductsUserStyles.text} style={{ marginLeft: 60 }}>
             Name
           </div>
@@ -160,7 +201,12 @@ const ContentProductsUser = () => {
           </div>
         </div>
         <div style={{ display: "flex", marginTop: 0 }}>
-          <input ref={inputName} type="text" className={ContentProductsUserStyles.inputText} />
+          <input
+            ref={inputName}
+            type="text"
+            className={ContentProductsUserStyles.inputText}
+            onChange={() => onChangeInputNameHandler()}
+          />
           <input
             ref={inputQuantity}
             type="number"
@@ -174,7 +220,7 @@ const ContentProductsUser = () => {
             style={{ width: 60 }}
           />
         </div>
-        <div style={{ display: "flex", marginTop: 6 }}>
+        <div style={{ display: "flex", marginTop: 0 }}>
           <button className={ContentProductsUserStyles.button} onClick={addHandler}>
             <div style={{ marginLeft: 7 }}>Add</div>
           </button>
@@ -190,7 +236,41 @@ const ContentProductsUser = () => {
           </button>
         </div>
       </div>
-      <div className={ContentProductsUserStyles.frame} style={{ marginTop: 10, height: 110 }}></div>
+      <div className={ContentProductsUserStyles.frame} style={{ marginTop: 10, height: 135 }}>
+        <div className={ContentProductsUserStyles.imageContent}>
+          <img
+            className={ContentProductsUserStyles.image}
+            alt="not found"
+            src={currentImageSource}
+          />
+          <div style={{ marginLeft: 5 }}>
+            <form onSubmit={upLoadImage} style={{ height: 50 }}>
+              <div style={{ marginTop: 20, marginLeft: 26 }}>
+                <input type="file" name="imageData" style={{ width: 118 }} />
+                <input
+                  type="hidden"
+                  name="targetId"
+                  value={currentProduct ? currentProduct.id : 0}
+                />
+                <input type="hidden" name="targetType" value={TargetTypes.products} />
+              </div>
+              <button
+                type="submit"
+                style={{ display: "flex", marginLeft: 26, marginTop: 15, cursor: "pointer" }}
+              >
+                Add image
+              </button>
+            </form>
+            <button
+              type="button"
+              style={{ marginTop: 26, marginLeft: 0, cursor: "pointer", height: 21 }}
+              onClick={deleteImage}
+            >
+              Delete Image
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

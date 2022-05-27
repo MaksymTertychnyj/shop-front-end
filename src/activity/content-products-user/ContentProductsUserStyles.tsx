@@ -9,21 +9,23 @@ const ContentProductsUserStyles = {
     border: "1px solid #AFEEEE",
     borderRadius: 10,
     width: 327,
-    height: 180,
+    height: 155,
     marginTop: 25,
     marginLeft: 10,
   }),
 
   image: style({
-    width: 65,
+    width: 75,
     height: 80,
-    marginTop: 10,
-    marginRight: 200,
+    marginTop: 30,
+    marginLeft: 10,
   }),
 
   imageContent: style({
-    width: 500,
-    height: 100,
+    width: 400,
+    height: 200,
+    display: "flex",
+    marginLeft: 15,
   }),
 
   inputHeader: style({

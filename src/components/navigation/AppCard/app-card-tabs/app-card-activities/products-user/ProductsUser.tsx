@@ -15,7 +15,9 @@ const ProductsUser = () => {
   const [inputName, setInputName] = useState<string>("");
   const [inputQuantity, setInputQuantity] = useState<string>("");
   const [inputPrice, setInputPrice] = useState<string>("");
-  const [currentImageSource, setCurrentImageSource] = useState<string>("");
+  const [currentImageSource, setCurrentImageSource] = useState<string>(
+    require("../../../../../../public/images/icons/home.png")
+  );
 
   return (
     <ProductsUserContext.Provider
