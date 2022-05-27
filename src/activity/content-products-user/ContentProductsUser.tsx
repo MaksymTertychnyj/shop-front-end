@@ -28,11 +28,62 @@ const ContentProductsUser = () => {
   const inputQuantity = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
   const inputPrice = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
 
-  const addHandler = () => {};
+  const addHandler = () => {
+    let prod: ProductModel = Object.create(null);
 
-  const editHandler = () => {};
+    try {
+      prod!.name = inputName.current.value;
+      prod!.quantity = Number.parseInt(inputQuantity.current.value);
+      prod!.price = Number.parseFloat(inputPrice.current.value);
+      prod!.categoryId = idCategory;
 
-  const deleteHandler = () => {};
+      ProductService.addProduct(prod)
+        .then((resp) => {
+          setProduct(resp.data);
+          ProductService.getProductsByCategory(idCategory).then((resp) => setProducts(resp.data));
+        })
+        .catch((ex) => alert(ex));
+    } catch {
+      alert("incorrect data of product");
+    }
+  };
+
+  const editHandler = () => {
+    if (currentProduct) {
+      let prod: ProductModel = Object.create(null);
+
+      try {
+        prod!.id = currentProduct.id;
+        prod!.name = inputName.current.value;
+        prod!.quantity = Number.parseInt(inputQuantity.current.value);
+        prod!.price = Number.parseFloat(inputPrice.current.value);
+        prod!.categoryId = currentProduct.categoryId;
+        ProductService.updateProduct(prod)
+          .then((resp) => {
+            setProduct(resp.data);
+            ProductService.getProductsByCategory(idCategory).then((resp) => setProducts(resp.data));
+          })
+          .catch((ex) => alert(ex));
+      } catch {
+        alert("incorrect data of product");
+      }
+    } else {
+      alert("you havn't choosed any product");
+    }
+  };
+
+  const deleteHandler = () => {
+    if (currentProduct) {
+      ProductService.deleteProduct(currentProduct.id).then(() => {
+        setProduct(null);
+        ProductService.getProductsByCategory(idCategory)
+          .then((resp) => setProducts(resp.data))
+          .catch((ex) => alert(ex));
+      });
+    } else {
+      alert("you havwn't choosed any product");
+    }
+  };
 
   useEffect(() => {
     DepartmentService.getAllDepartments()
@@ -139,6 +190,7 @@ const ContentProductsUser = () => {
           </button>
         </div>
       </div>
+      <div className={ContentProductsUserStyles.frame} style={{ marginTop: 10, height: 110 }}></div>
     </div>
   );
 };

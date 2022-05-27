@@ -3,6 +3,7 @@ type ProductModel = null | {
   name: string;
   quantity: number;
   price: number;
+  categoryId: number;
 };
 
 export default ProductModel;
