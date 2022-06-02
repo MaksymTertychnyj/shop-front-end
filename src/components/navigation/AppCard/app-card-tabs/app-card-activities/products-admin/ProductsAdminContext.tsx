@@ -20,6 +20,8 @@ const ProductsAdminContext = createContext({
   setInputName: (input: string) => returnType,
   currentImageSource: imageSource,
   setCurrentImageSource: (imgSource: string) => returnType,
+  showModalNewModel: false,
+  setShowModalNewModel: (state: boolean) => returnType,
 });
 
 export default ProductsAdminContext;

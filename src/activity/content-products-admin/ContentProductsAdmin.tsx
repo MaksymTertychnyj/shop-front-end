@@ -2,6 +2,7 @@ import { MutableRefObject, useContext, useEffect, useRef, useState } from "react
 import CategoryService from "../../api-service/category-service/CategoryService";
 import DepartmentService from "../../api-service/department-service/DepartmentService";
 import ImageService from "../../api-service/imageService/ImageService";
+import ModelAddModel from "../../components/modal-add-model/ModalAddModel";
 import ProductsAdminContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/products-admin/ProductsAdminContext";
 import CategoryModel from "../../models/CategoryModel";
 import DepartmentModel from "../../models/DepartmentModel";
@@ -18,6 +19,7 @@ const ContentProductsAdmin = () => {
     setInputName,
     currentImageSource,
     setCurrentImageSource,
+    setShowModalNewModel,
   } = useContext(ProductsAdminContext);
   const inputName = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
 
@@ -127,13 +129,20 @@ const ContentProductsAdmin = () => {
         />
         <div style={{ display: "flex", marginTop: -25 }}>
           <button className={ContentStyles.button} onClick={addHandler}>
-            <div style={{ marginLeft: 7 }}>Add</div>
+            <div className={ContentStyles.buttonText}>Add</div>
           </button>
           <button className={ContentStyles.button} onClick={editHandler}>
-            <div style={{ marginLeft: 7 }}>Edit</div>
+            <div className={ContentStyles.buttonText}>Edit</div>
           </button>
           <button className={ContentStyles.button} onClick={deleteHandler}>
-            <div>Delete</div>
+            <div className={ContentStyles.buttonText}>Delete</div>
+          </button>
+          <button
+            style={{ width: 80 }}
+            className={ContentStyles.button}
+            onClick={() => setShowModalNewModel(true)}
+          >
+            <div className={ContentStyles.buttonText}>Add model</div>
           </button>
         </div>
       </div>
@@ -144,7 +153,15 @@ const ContentProductsAdmin = () => {
         <div style={{ display: "flex" }}>
           <form onSubmit={upLoadImage}>
             <div style={{ marginTop: 0, marginLeft: 25 }}>
-              <input type="file" name="imageData" />
+              <label htmlFor="contained-button-file" className="m-0 w-100">
+                <input
+                  id="contained-button-file"
+                  type="file"
+                  name="imageData"
+                  style={{ display: "none" }}
+                />
+                <div className={ContentStyles.buttonChooseFile}>Choose file</div>
+              </label>
               <input
                 type="hidden"
                 name="targetId"
@@ -158,18 +175,20 @@ const ContentProductsAdmin = () => {
             </div>
             <button
               type="submit"
-              style={{ display: "flex", marginLeft: 25, marginTop: 10, cursor: "pointer" }}
+              className={ContentStyles.button}
+              style={{ display: "flex", marginLeft: 25, marginTop: 10 }}
             >
-              Add image
+              <div className={ContentStyles.buttonText}>Add image</div>
             </button>
           </form>
         </div>
         <button
           type="button"
-          style={{ marginTop: 10, marginRight: 160, cursor: "pointer" }}
+          className={ContentStyles.button}
+          style={{ marginTop: 10, marginRight: 182 }}
           onClick={deleteImage}
         >
-          Delete Image
+          <div className={ContentStyles.buttonText}>Delete Image</div>
         </button>
       </div>
     </div>

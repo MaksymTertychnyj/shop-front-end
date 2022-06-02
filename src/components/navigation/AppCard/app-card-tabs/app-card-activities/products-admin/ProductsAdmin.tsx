@@ -7,6 +7,7 @@ import DepartmentModel from "../../../../../../models/DepartmentModel";
 import ImageModel from "../../../../../../models/image/ImageModel";
 import TargetTypes from "../../../../../../models/TargetTypes";
 import AppTabList from "../../../../../app-tab-list/AppTabList";
+import ModelAddModel from "../../../../../modal-add-model/ModalAddModel";
 import ProductsAdminContext from "./ProductsAdminContext";
 import ProductsAdminStyles from "./ProductsAdminStyles";
 
@@ -16,6 +17,7 @@ const ProductsAdmin = () => {
   const [currentCategory, setCategory] = useState<CategoryModel>(null);
   const [inputName, setInputName] = useState<string>("");
   const [currentImageSource, setCurrentImageSource] = useState<string>("");
+  const [showModalNewModel, setShowModalNewModel] = useState(false);
 
   return (
     <ProductsAdminContext.Provider
@@ -30,6 +32,8 @@ const ProductsAdmin = () => {
         setInputName,
         currentImageSource,
         setCurrentImageSource,
+        showModalNewModel,
+        setShowModalNewModel,
       }}
     >
       <div className={ProductsAdminStyles.container}>
@@ -43,6 +47,7 @@ const ProductsAdmin = () => {
         </div>
         <ListProductsAdmin />
       </div>
+      <ModelAddModel visible={showModalNewModel} closeModal={setShowModalNewModel} />
     </ProductsAdminContext.Provider>
   );
 };
