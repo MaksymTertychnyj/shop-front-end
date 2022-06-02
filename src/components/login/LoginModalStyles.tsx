@@ -10,18 +10,19 @@ const LoginModalStyles = {
 
   button: style({
     width: 80,
-    height: 20,
+    height: 25,
     marginLeft: 60,
     marginTop: 15,
     backgroundColor: "#F75D59",
     border: 0,
+    borderRadius: 4,
     cursor: "pointer",
   }),
 
   inputText: style({
     textAlign: "center",
     width: 150,
-    height: 20,
+    height: 25,
     marginLeft: 20,
     marginTop: 3,
     borderRadius: 5,

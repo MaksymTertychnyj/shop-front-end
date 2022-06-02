@@ -42,6 +42,15 @@ const AddEmployeeStyles = {
   button: style({
     marginLeft: 30,
     cursor: "pointer",
+    border: 0,
+    height: 25,
+    borderRadius: 4,
+    backgroundColor: "#C2DFFF",
+    textAlign: "center",
+  }),
+
+  buttonText: style({
+    fontSize: 12,
   }),
 };
 

@@ -44,19 +44,33 @@ const ContentStyles = {
   }),
 
   button: style({
-    display: "flex",
-    width: 55,
+    border: 0,
+    borderRadius: 4,
+    backgroundColor: "#92C7C7",
+    textAlign: "center",
     marginTop: 35,
     marginLeft: 10,
     cursor: "pointer",
   }),
 
+  buttonImage: style({
+    border: 0,
+    borderRadius: 4,
+    backgroundColor: "#B0E0E6",
+    textAlign: "center",
+    cursor: "pointer",
+  }),
+
+  buttonText: style({
+    fontSize: 12,
+  }),
+
   buttonChooseFile: style({
-    background: "#CFECEC",
-    width: 60,
-    height: 25,
-    borderRadius: 5,
-    fontSize: 14,
+    background: "#C2DFFF",
+    width: 70,
+    height: 20,
+    borderRadius: 4,
+    fontSize: 12,
   }),
 };
 

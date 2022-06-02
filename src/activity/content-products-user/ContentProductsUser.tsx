@@ -200,17 +200,17 @@ const ContentProductsUser = () => {
           </div>
         </div>
         <div style={{ display: "flex", marginTop: 10 }}>
-          <div className={ContentProductsUserStyles.text} style={{ marginLeft: 60 }}>
+          <div className={ContentProductsUserStyles.text} style={{ marginLeft: 70 }}>
             Name
           </div>
-          <div className={ContentProductsUserStyles.text} style={{ marginLeft: 68 }}>
+          <div className={ContentProductsUserStyles.text} style={{ marginLeft: 56 }}>
             Quantity
           </div>
-          <div className={ContentProductsUserStyles.text} style={{ marginLeft: 40 }}>
+          <div className={ContentProductsUserStyles.text} style={{ marginLeft: 33 }}>
             Price
           </div>
         </div>
-        <div style={{ display: "flex", marginTop: 0 }}>
+        <div style={{ display: "flex", marginTop: 0, marginLeft: 10 }}>
           <input
             ref={inputName}
             type="text"
@@ -230,19 +230,19 @@ const ContentProductsUser = () => {
             style={{ width: 60 }}
           />
         </div>
-        <div style={{ display: "flex", marginTop: 0 }}>
+        <div style={{ display: "flex", marginTop: 0, marginLeft: 25 }}>
           <button className={ContentProductsUserStyles.button} onClick={addHandler}>
-            <div style={{ marginLeft: 7 }}>Add</div>
+            <div className={ContentProductsUserStyles.buttonText}>Add</div>
           </button>
           <button className={ContentProductsUserStyles.button} onClick={editHandler}>
-            <div style={{ marginLeft: 7 }}>Edit</div>
+            <div className={ContentProductsUserStyles.buttonText}>Edit</div>
           </button>
           <button
             className={ContentProductsUserStyles.button}
             style={{ width: 65 }}
             onClick={deleteHandler}
           >
-            <div style={{ marginLeft: 5 }}>Delete</div>
+            <div className={ContentProductsUserStyles.buttonText}>Delete</div>
           </button>
         </div>
       </div>

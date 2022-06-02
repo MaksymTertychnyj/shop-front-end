@@ -113,7 +113,7 @@ const AddEmployee = () => {
       </div>
       <div
         className={AddEmployeeStyles.inputText}
-        style={{ marginLeft: 40, marginTop: -10, fontWeight: "bold", cursor: "default" }}
+        style={{ marginLeft: 40, marginTop: 5, fontWeight: "bold", cursor: "default" }}
       >
         Password
       </div>
@@ -127,13 +127,13 @@ const AddEmployee = () => {
           style={{ marginLeft: 140 }}
           onClick={() => AddFunc()}
         >
-          Add
+          <div className={AddEmployeeStyles.buttonText}>Add</div>
         </button>
         <button className={AddEmployeeStyles.button} onClick={() => editFunc()}>
-          Edit
+          <div className={AddEmployeeStyles.buttonText}>Edit</div>
         </button>
         <button className={AddEmployeeStyles.button} onClick={() => removeFunc()}>
-          Delete
+          <div className={AddEmployeeStyles.buttonText}>Delete</div>
         </button>
       </div>
     </div>

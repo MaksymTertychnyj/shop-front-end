@@ -37,7 +37,7 @@ const ContentProductsUserStyles = {
 
   inputText: style({
     width: 120,
-    height: 18,
+    height: 20,
     textAlign: "center",
     marginLeft: 15,
     marginTop: 5,
@@ -46,18 +46,23 @@ const ContentProductsUserStyles = {
   }),
 
   text: style({
-    fontSize: 13,
+    fontSize: 12,
     fontWeight: "bold",
     color: "grey",
   }),
 
   button: style({
-    display: "flex",
-    width: 55,
     marginTop: 15,
     marginLeft: 37,
     cursor: "pointer",
+    border: 0,
+    borderRadius: 4,
+    backgroundColor: "#C2DFFF",
     textAlign: "center",
+  }),
+
+  buttonText: style({
+    fontSize: 12,
   }),
 
   buttonChooseFile: style({

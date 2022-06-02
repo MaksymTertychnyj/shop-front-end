@@ -73,7 +73,7 @@ const LoginModal = ({ visible }: LoginModalProps) => {
               setAttemptLogin(!attemptLogin);
             }}
           >
-            <text style={{ color: "white" }}>Login</text>
+            <div style={{ color: "white", fontSize: 14 }}>Login</div>
           </button>
           <div style={{ marginTop: 20, marginLeft: 20 }}>
             <label>
@@ -98,8 +98,8 @@ const container = {
     right: "auto",
     bottom: "auto",
     transform: "translate(-50%, -50%)",
-    width: 200,
-    height: 280,
+    width: 235,
+    height: 350,
     border: "1px solid #ccc",
     background: "#FFF8DC",
     borderRadius: "10px",
