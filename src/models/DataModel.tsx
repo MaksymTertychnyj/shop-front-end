@@ -1,6 +1,6 @@
 type DataModel = null | {
   name: string;
-  value: string;
+  value: any;
 };
 
 export default DataModel;
