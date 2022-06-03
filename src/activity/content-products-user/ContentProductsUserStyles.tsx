@@ -53,11 +53,11 @@ const ContentProductsUserStyles = {
 
   button: style({
     marginTop: 15,
-    marginLeft: 37,
+    marginLeft: 20,
     cursor: "pointer",
     border: 0,
     borderRadius: 4,
-    backgroundColor: "#C2DFFF",
+    backgroundColor: "#92C7C7",
     textAlign: "center",
   }),
 
@@ -65,12 +65,15 @@ const ContentProductsUserStyles = {
     fontSize: 12,
   }),
 
-  buttonChooseFile: style({
-    background: "#CFECEC",
-    width: 60,
-    height: 25,
-    borderRadius: 5,
-    fontSize: 14,
+  buttonImage: style({
+    background: "#C2DFFF",
+    width: 70,
+    height: 20,
+    border: 0,
+    borderRadius: 4,
+    fontSize: 12,
+    cursor: "pointer",
+    marginLeft: 26,
   }),
 };
 

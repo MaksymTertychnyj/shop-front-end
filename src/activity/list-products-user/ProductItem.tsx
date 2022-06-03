@@ -31,13 +31,13 @@ const ProductItem = ({ product }: any) => {
         <text className={ListStyles.column} style={{ color: color, width: 39 }}>
           {checkTextWidth(product?.id.toString(), 4)}
         </text>
-        <text className={ListStyles.column} style={{ color: color, width: 140 }}>
+        <text className={ListStyles.column} style={{ color: color, width: 142 }}>
           {checkTextWidth(product.name, 20)}
         </text>
         <text className={ListStyles.column} style={{ color: color }}>
           {checkTextWidth(product?.quantity.toString(), 8)}
         </text>
-        <text className={ListStyles.column} style={{ color: color, width: 63 }}>
+        <text className={ListStyles.column} style={{ color: color, width: 65 }}>
           {checkTextWidth(product?.price.toString(), 8)}
         </text>
       </div>
