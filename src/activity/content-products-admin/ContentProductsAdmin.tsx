@@ -22,6 +22,14 @@ const ContentProductsAdmin = () => {
     setShowModalNewModel,
   } = useContext(ProductsAdminContext);
   const inputName = useRef<HTMLInputElement>() as MutableRefObject<HTMLInputElement>;
+  const str = `{"id":10,"name":"спининг","brand":"Carbon","quantity":10,"price":110,"categoryId":1}`;
+
+  const someHandler = () => {
+    let v = JSON.parse(str);
+    for (let key in v) {
+      console.log(key + ": " + v[key]);
+    }
+  };
 
   const loadImage = (targetId: number, targetType: number) => {
     ImageService.getImage(targetId, targetType)
@@ -143,6 +151,9 @@ const ContentProductsAdmin = () => {
             onClick={() => setShowModalNewModel(true)}
           >
             <div className={ContentStyles.buttonText}>Add model</div>
+          </button>
+          <button style={{ width: 40 }} className={ContentStyles.button} onClick={someHandler}>
+            <div className={ContentStyles.buttonText}>aa</div>
           </button>
         </div>
       </div>

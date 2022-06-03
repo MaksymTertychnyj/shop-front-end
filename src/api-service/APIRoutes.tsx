@@ -7,6 +7,7 @@ const APIRoutes = {
   getDepartmentUrl: () => APIConfig.URL + "department/",
   getCategoryUrl: () => APIConfig.URL + "category/",
   getProductUrl: () => APIConfig.URL + "product/",
+  getJsonModelUrl: () => APIConfig.URL + "jsonModel/",
 };
 
 export default APIRoutes;

@@ -1,27 +1,14 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import {
-  Button,
-  Container,
-  Form,
-  ListGroupItem,
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-  ModalTitle,
-} from "react-bootstrap";
-import styled from "styled-components";
-import DataModel from "../../models/DataModel";
+import { Button, ModalBody, ModalFooter, ModalHeader } from "react-bootstrap";
 import { ModalAddModelProps } from "./ModalAddModelProps";
 import Modal from "react-modal";
 import Styles from "./Styles";
-import Input from "react-select/dist/declarations/src/components/Input";
 import ProductsAdminContext from "../navigation/AppCard/app-card-tabs/app-card-activities/products-admin/ProductsAdminContext";
 
 Modal.setAppElement("#root");
 
 const ModelAddModel = (props: ModalAddModelProps) => {
   const { currentCategory } = useContext(ProductsAdminContext);
-  const [isAdded, setIsAdded] = useState(false);
   const inputName = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
   const inputValue = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
   const inputNameObject = useRef<HTMLInputElement>() as React.MutableRefObject<HTMLInputElement>;
@@ -67,7 +54,7 @@ const ModelAddModel = (props: ModalAddModelProps) => {
           <>
             {jsonString.split(",").map((o, i) => {
               return (
-                <p style={{ height: 10 }} key={i}>
+                <p style={{ height: 7 }} key={i}>
                   {o},
                 </p>
               );
