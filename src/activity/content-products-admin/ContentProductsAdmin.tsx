@@ -146,11 +146,11 @@ const ContentProductsAdmin = () => {
             <div className={ContentStyles.buttonText}>Delete</div>
           </button>
           <button
-            style={{ width: 80 }}
+            style={{ width: 50 }}
             className={ContentStyles.button}
             onClick={() => setShowModalNewModel(true)}
           >
-            <div className={ContentStyles.buttonText}>Add model</div>
+            <div className={ContentStyles.buttonText}>Model</div>
           </button>
           <button style={{ width: 40 }} className={ContentStyles.button} onClick={someHandler}>
             <div className={ContentStyles.buttonText}>aa</div>

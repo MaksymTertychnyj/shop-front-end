@@ -11,7 +11,7 @@ const Styles = {
   }),
 
   body: style({
-    height: 150,
+    height: 230,
     overflow: "auto",
     fontSize: 13,
     fontWeight: "bold",
