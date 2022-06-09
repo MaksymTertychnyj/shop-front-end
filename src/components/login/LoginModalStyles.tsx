@@ -21,6 +21,7 @@ const LoginModalStyles = {
 
   inputText: style({
     textAlign: "center",
+    fontSize: 11,
     width: 150,
     height: 25,
     marginLeft: 20,

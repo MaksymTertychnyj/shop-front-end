@@ -1,10 +1,7 @@
+import User from "./User";
+
 type UserAuthenticateResponse = null | {
-  firstName: string;
-  lastName: string;
-  email: string;
-  login: string;
-  password: string;
-  role: string;
+  user: User;
   token: string;
 };
 

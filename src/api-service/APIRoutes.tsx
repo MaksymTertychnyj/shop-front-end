@@ -1,7 +1,7 @@
 import APIConfig from "./APIConfig";
 
 const APIRoutes = {
-  getLoginUrl: () => APIConfig.URL + "login/",
+  getLoginUrl: () => APIConfig.URL + "loginEmployee/",
   getEmployeeUrl: () => APIConfig.URL + "employee/",
   getImageUrl: () => APIConfig.URL + "image/",
   getDepartmentUrl: () => APIConfig.URL + "department/",
