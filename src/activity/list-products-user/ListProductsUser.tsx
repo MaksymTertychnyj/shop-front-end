@@ -6,14 +6,16 @@ import ListStyles from "./ListStyles";
 import ProductItem from "./ProductItem";
 
 const ListProductsUser = () => {
-  const { inputName, products } = useContext(ProductsUserContext);
+  const { inputName, products, setProduct } = useContext(ProductsUserContext);
 
   useEffect(() => {}, [inputName, products]);
 
   return (
     <div className={ListStyles.container}>
       <div className={ListStyles.header}>
-        <div className={ListStyles.text}>List of products</div>
+        <div onClick={() => setProduct(null)} className={ListStyles.text}>
+          List of products
+        </div>
       </div>
       <div className={ListStyles.blocBody}>
         <div className={ListStyles.row} style={{ background: "#659EC7" }}>

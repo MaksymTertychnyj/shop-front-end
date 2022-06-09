@@ -9,7 +9,7 @@ const ParameterItem = (props: ParameterItemProps) => {
       <input
         ref={inputParameter}
         onChange={() => props.assignFunc(props.property?.name!, inputParameter.current.value)}
-        style={{ width: 150, marginLeft: 10 }}
+        style={{ width: 120, marginLeft: 10, textOverflow: "ellipsis" }}
         type={typeof props.property?.value === "string" ? "text" : "number"}
         placeholder={props.property?.value}
       />
