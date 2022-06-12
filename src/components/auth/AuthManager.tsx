@@ -1,4 +1,3 @@
-import React from "react";
 import UserAuthenticateResponse from "../../models/user/UserAuthenticateResponse";
 
 const AuthManager = {

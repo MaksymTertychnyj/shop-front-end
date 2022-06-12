@@ -1,7 +1,5 @@
-import { useContext, useEffect, useState } from "react";
-import ProductService from "../../api-service/product-service/ProductService";
+import { useContext, useEffect } from "react";
 import ProductsUserContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/products-user/ProductsUserContext";
-import ProductModel from "../../models/ProductModel";
 import ListStyles from "./ListStyles";
 import ProductItem from "./ProductItem";
 

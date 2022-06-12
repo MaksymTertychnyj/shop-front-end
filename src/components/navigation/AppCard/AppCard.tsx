@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import LoginProviderContext from "../../login-provider/LoginProviderContext";
 import AppCardTabs from "./app-card-tabs/AppCardTabs";
 import AppCardStyles from "./AppCardStyles";

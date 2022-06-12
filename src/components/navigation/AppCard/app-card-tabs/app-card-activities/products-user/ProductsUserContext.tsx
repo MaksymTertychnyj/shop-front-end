@@ -1,7 +1,4 @@
-import { useRef } from "react";
-import { createContext, MutableRefObject } from "react";
-import CategoryModel from "../../../../../../models/CategoryModel";
-import DepartmentModel from "../../../../../../models/DepartmentModel";
+import { createContext } from "react";
 import ProductModel from "../../../../../../models/ProductModel";
 
 const returnType: any = {};

@@ -1,8 +1,6 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import TargetTypes from "../../models/TargetTypes";
-import { AppTabProps } from "../app-tab/AppTabProps";
 import ProductsAdminContext from "../navigation/AppCard/app-card-tabs/app-card-activities/products-admin/ProductsAdminContext";
-import AppTabListProps from "./AppTabListProps";
 import AppTabListStyle from "./AppTabListStyles";
 
 const AppTabList = () => {

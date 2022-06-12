@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef } from "react";
+import { MutableRefObject, useRef } from "react";
 import { ParameterItemProps } from "./ParameterItemProps";
 
 const ParameterItem = (props: ParameterItemProps) => {

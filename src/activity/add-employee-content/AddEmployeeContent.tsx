@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import EmployeeItem from "../../components/employee-item/EmployeeItem";
 import EmployeeContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/employees/EmployeeContext";
 import AddEmployeeContentStyles from "./AddEmployeeContentStyles";

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import User from "../../models/user/User";
 import { EmployeeItemProps } from "./EmployeeItemProps";
 import EmployeeItemStyles from "./EmployeeItemStyles";
 import EmployeeContext from "../navigation/AppCard/app-card-tabs/app-card-activities/employees/EmployeeContext";

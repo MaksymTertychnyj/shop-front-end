@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import ProductsAdminContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/products-admin/ProductsAdminContext";
-import DepartmentModel from "../../models/DepartmentModel";
 import DepartmentItemProps from "./DepartmentItemProps";
 import ListStyles from "./ListStyles";
 

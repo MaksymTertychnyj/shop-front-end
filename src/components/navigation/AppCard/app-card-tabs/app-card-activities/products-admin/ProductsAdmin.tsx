@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ContentProductsAdmin from "../../../../../../activity/content-products-admin/ContentProductsAdmin";
 import ListProductsAdmin from "../../../../../../activity/list-products-admin/ListProductsAdmin";
-import DepartmentService from "../../../../../../api-service/department-service/DepartmentService";
 import CategoryModel from "../../../../../../models/CategoryModel";
 import DepartmentModel from "../../../../../../models/DepartmentModel";
-import ImageModel from "../../../../../../models/image/ImageModel";
 import TargetTypes from "../../../../../../models/TargetTypes";
 import AppTabList from "../../../../../app-tab-list/AppTabList";
 import ModelAddModel from "../../../../../modal-add-model/ModalAddModel";

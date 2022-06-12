@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
-import User from "../../models/user/User";
+import { useEffect, useState } from "react";
 import AuthManager from "../auth/AuthManager";
 import LoginModal from "../login/LoginModal";
 import LoginProviderContext from "./LoginProviderContext";
 
 const LoginProvider = ({ children }: any) => {
   const [isLoged, setIsLoged] = useState(false);
-  const [user, setUser] = useState<User>(null);
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {

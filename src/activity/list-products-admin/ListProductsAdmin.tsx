@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import CategoryService from "../../api-service/category-service/CategoryService";
 import DepartmentService from "../../api-service/department-service/DepartmentService";
-import EmployeeItem from "../../components/employee-item/EmployeeItem";
 import ProductsAdminContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/products-admin/ProductsAdminContext";
 import CategoryModel from "../../models/CategoryModel";
 import DepartmentModel from "../../models/DepartmentModel";

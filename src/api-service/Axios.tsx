@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosRequestConfig } from "axios";
+import axios, { AxiosError } from "axios";
 import AuthManager from "../components/auth/AuthManager";
 import { StatusCodes } from "../constants/StatusCodes";
 import UserAuthenticateResponse from "../models/user/UserAuthenticateResponse";

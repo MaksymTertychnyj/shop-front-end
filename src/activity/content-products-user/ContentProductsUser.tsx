@@ -1,5 +1,3 @@
-import { getAllByLabelText } from "@testing-library/react";
-import { Console } from "console";
 import { MutableRefObject, useContext, useEffect, useRef, useState } from "react";
 import Select from "react-select";
 import CategoryService from "../../api-service/category-service/CategoryService";
@@ -10,9 +8,7 @@ import CategoryMapper from "../../components/data-mapper/CategoryMapper";
 import DepartmentMapper from "../../components/data-mapper/DepartmentMapper";
 import ModalParameters from "../../components/modal-product-parameters/ModalParameters";
 import ProductsUserContext from "../../components/navigation/AppCard/app-card-tabs/app-card-activities/products-user/ProductsUserContext";
-import CategoryModel from "../../models/CategoryModel";
 import DataOfDropdown from "../../models/DataOfDropdown";
-import DepartmentModel from "../../models/DepartmentModel";
 import ProductModel from "../../models/ProductModel";
 import TargetTypes from "../../models/TargetTypes";
 import ContentProductsUserStyles from "./ContentProductsUserStyles";
@@ -24,7 +20,6 @@ const ContentProductsUser = () => {
     setProduct,
     currentProduct,
     setInputName,
-    products,
     currentImageSource,
     setCurrentImageSource,
   } = useContext(ProductsUserContext);

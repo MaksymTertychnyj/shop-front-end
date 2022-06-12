@@ -1,5 +1,4 @@
-import { isContentEditable } from "@testing-library/user-event/dist/utils";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import User from "../../../../models/user/User";
 import AppTab from "../../../app-tab/AppTab";
 import AuthManager from "../../../auth/AuthManager";

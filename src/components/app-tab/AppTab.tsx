@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { AppTabProps } from "./AppTabProps";
 import AppTabStyles from "./AppTabStyles";
 

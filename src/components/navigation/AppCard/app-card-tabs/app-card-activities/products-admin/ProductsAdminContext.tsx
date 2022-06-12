@@ -1,7 +1,6 @@
 import { createContext } from "react";
 import CategoryModel from "../../../../../../models/CategoryModel";
 import DepartmentModel from "../../../../../../models/DepartmentModel";
-import ImageModel from "../../../../../../models/image/ImageModel";
 import TargetTypes from "../../../../../../models/TargetTypes";
 
 const returnType: any = {};

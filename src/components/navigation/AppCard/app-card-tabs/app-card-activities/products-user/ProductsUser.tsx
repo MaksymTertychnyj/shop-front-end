@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ContentProductsUser from "../../../../../../activity/content-products-user/ContentProductsUser";
 import ListProductsUser from "../../../../../../activity/list-products-user/ListProductsUser";
-import CategoryModel from "../../../../../../models/CategoryModel";
-import DepartmentModel from "../../../../../../models/DepartmentModel";
 import ProductModel from "../../../../../../models/ProductModel";
 import ProductsUserContext from "./ProductsUserContext";
 import ProductsUserStyles from "./ProductsUserStyles";
