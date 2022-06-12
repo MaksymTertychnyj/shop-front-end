@@ -7,7 +7,7 @@ on:
     branches: ["master"]
 
 jobs:
-  build:
+  init:
     runs-on: ubuntu-latest
 
     strategy:
