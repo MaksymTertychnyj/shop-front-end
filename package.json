@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false && react-scripts build",
     "build:storybook": "node ./scripts/storybook.js",
     "test": "react-scripts test",
     "test:e2e": "node ./scripts/e2e.test.js",
