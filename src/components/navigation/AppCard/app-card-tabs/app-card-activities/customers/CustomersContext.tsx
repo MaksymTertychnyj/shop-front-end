@@ -11,9 +11,9 @@ const CustomersContext = createContext({
   currentCustomer: customer,
   currentOrder: order,
   orders: orders,
-  setOrders: (o: OrderModel[]) => returnType,
-  setCurrentOrder: (o: OrderModel) => returnType,
-  setCurrentCustomer: (c: CustomerModel) => returnType,
+  setOrders: (_o: OrderModel[]) => returnType,
+  setCurrentOrder: (_o: OrderModel) => returnType,
+  setCurrentCustomer: (_c: CustomerModel) => returnType,
 });
 
 export default CustomersContext;

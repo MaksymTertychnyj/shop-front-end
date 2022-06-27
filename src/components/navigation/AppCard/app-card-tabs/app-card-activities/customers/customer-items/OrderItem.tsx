@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Accordion, Button, Col, Container, FormGroup, FormLabel, Row } from "react-bootstrap";
+import { Accordion, Button, Col, Container, FormGroup, Row } from "react-bootstrap";
 import OrderModel from "../../../../../../../models/order/OrderModel";
 import OrderStatus from "../../../../../../../models/order/OrderStatus";
 import { style } from "typestyle";
@@ -176,7 +176,7 @@ const OrderItem = (props: Props) => {
                 <Select
                   styles={DropDownStyles}
                   options={statusList}
-                  onChange={(val) => setStatus(val!)}
+                  onChange={(val) => setStatus(val as DataDropDown)}
                   value={status}
                 />
               </Col>
