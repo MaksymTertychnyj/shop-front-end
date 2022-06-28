@@ -46,6 +46,19 @@ const CustomersStyles = {
   button: style({
     width: 60,
   }),
+
+  label: style({
+    fontWeight: "bold",
+    fontSize: 12,
+    marginLeft: 10,
+    width: 100,
+  }),
+
+  value: style({
+    fontSize: 12,
+    marginRight: 10,
+    width: 170,
+  }),
 };
 
 export default CustomersStyles;
