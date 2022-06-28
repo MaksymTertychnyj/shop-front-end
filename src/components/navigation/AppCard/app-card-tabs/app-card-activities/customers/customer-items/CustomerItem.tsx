@@ -13,9 +13,9 @@ const CustomerItem = (props: Props) => {
   const [color, setColor] = useState<string>("");
   const [customer, setCustomer] = useState<Customer>();
 
-  const renderPopoverParameters = (props: any) => {
+  const renderPopoverParameters = (prop: any) => {
     return (
-      <Popover {...props}>
+      <Popover {...prop}>
         <Row>
           <Col className={CustomersStyles.label}>FirstName:</Col>
           <Col className={CustomersStyles.value}>{customer?.firstName}</Col>
